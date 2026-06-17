@@ -1,0 +1,22 @@
+Options -Indexes
+DirectoryIndex index.html
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+  Header unset X-Powered-By
+</IfModule>
+
+RewriteEngine On
+
+# Do not expose setup/database files over the web.
+RewriteRule ^database/ - [F,L]
+RewriteRule ^README\.md$ - [F,L]
+RewriteRule ^setup\.md$ - [F,L]
+
+# Route clean API URLs such as /api/public/sessions to PHP.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^api/?(.*)$ api/index.php [QSA,L]

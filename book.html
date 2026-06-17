@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="Book a SummitCraft Leadership programme session." />
+  <title>Book a Programme | SummitCraft Leadership</title>
+  <link href="css/styles.css" rel="stylesheet" />
+  <link href="css/brand.css" rel="stylesheet" />
+  <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<nav class="navbar navbar-marketing navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container px-5">
+    <a class="navbar-brand" href="index.html" aria-label="SummitCraft Leadership home">
+      <img src="assets/img/summitcraft-logo-wide.png" alt="SummitCraft Leadership">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Programmes</a></li>
+        <li class="nav-item"><a class="nav-link active" href="book.html">Sessions</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item ms-lg-2"><a class="nav-link nav-cta" href="contact.html">Enquire</a></li>
+        <li class="nav-item"><a class="nav-link nav-book" href="book.html">Book Now</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+
+<header class="sc-page-header text-center">
+  <div class="container px-5">
+    <span class="sc-section-label">Book Directly</span>
+    <h1 class="mb-0">Book a Programme Session</h1>
+  </div>
+</header>
+
+<section class="py-7 bg-white">
+  <div class="container px-5">
+    <div class="row g-5">
+      <div class="col-lg-7">
+        <span class="sc-section-label">Available Sessions</span>
+        <h2 class="mb-3">Choose a session</h2>
+        <span class="sc-divider left"></span>
+        <p class="text-muted">Select an available session below, then complete the booking form. Spaces are reserved as pending payment after you submit the form.</p>
+        <div id="priceNotice" class="sc-alert sc-alert-info mb-4">Loading current programme prices…</div>
+        <div id="sessionList" class="sc-session-list" aria-live="polite">
+          <div class="sc-loading">Loading sessions…</div>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="card sc-card p-4 p-lg-5 sc-sticky-card">
+          <span class="sc-section-label">Your Details</span>
+          <h2 class="mb-2">Booking Form</h2>
+          <span class="sc-divider left"></span>
+          <div id="selectedSessionSummary" class="sc-alert sc-alert-warning">Please select a session first.</div>
+          <form id="bookingForm" class="sc-form" novalidate>
+            <input type="hidden" id="sessionId" name="sessionId">
+            <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+              <label for="bookingWebsite">Leave this field empty</label>
+              <input type="text" id="bookingWebsite" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="mb-3">
+              <label for="fullName">Full Name <span style="color:#CC0000;">*</span></label>
+              <input type="text" class="form-control" id="fullName" required autocomplete="name">
+              <div class="sc-field-error" id="err-fullName">Please enter your full name.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="organisation">Organisation <span class="text-muted fw-400" style="font-size:12px;">(optional)</span></label>
+              <input type="text" class="form-control" id="organisation" autocomplete="organization">
+            </div>
+
+            <div class="mb-3">
+              <label for="email">Email Address <span style="color:#CC0000;">*</span></label>
+              <input type="email" class="form-control" id="email" required autocomplete="email">
+              <div class="sc-field-error" id="err-email">Please enter a valid email address.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="phone">Phone Number <span class="text-muted fw-400" style="font-size:12px;">(optional)</span></label>
+              <input type="tel" class="form-control" id="phone" autocomplete="tel">
+            </div>
+
+            <div class="mb-3">
+              <label for="participants">Number of participants <span style="color:#CC0000;">*</span></label>
+              <input type="number" class="form-control" id="participants" min="1" value="1" required>
+              <div class="sc-field-error" id="err-participants">Please enter a valid number of participants.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="message">Additional notes <span class="text-muted fw-400" style="font-size:12px;">(optional)</span></label>
+              <textarea class="form-control" id="message" rows="4" placeholder="Tell us about any access needs, aims or important details."></textarea>
+            </div>
+
+            <div class="mb-4">
+              <label for="hearAbout">How did you hear about us?</label>
+              <select class="form-select" id="hearAbout">
+                <option value="">Please select…</option>
+                <option value="LinkedIn">LinkedIn</option>
+                <option value="Referral">Referral</option>
+                <option value="Google Search">Google Search</option>
+                <option value="Event">Event</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-check mb-4">
+              <input class="form-check-input" type="checkbox" id="privacyConsent" required>
+              <label class="form-check-label small" for="privacyConsent">I agree that SummitCraft Leadership may use my details to manage this booking and payment, in line with the <a href="privacy.html" target="_blank" rel="noopener">Privacy Statement</a>. <span style="color:#CC0000;">*</span></label>
+              <div class="sc-field-error" id="err-privacyConsent">Please confirm that you agree to the privacy statement.</div>
+            </div>
+
+            <div id="bookingError" class="sc-alert sc-alert-danger" style="display:none;"></div>
+            <button type="submit" class="btn btn-primary btn-lg w-100" id="bookingSubmit">Book and Continue to Payment Instructions</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="sc-footer py-5">
+  <div class="container px-5">
+    <div class="row g-4 mb-4">
+      <div class="col-lg-4">
+        <img src="assets/img/summitcraft-logo-wide.png" alt="SummitCraft Leadership" class="footer-logo">
+        <p class="small mb-0">Elevate Practice &nbsp;·&nbsp; Refine Leadership</p>
+      </div>
+      <div class="col-lg-2">
+        <h6 class="text-white fw-600 mb-3">Quick Links</h6>
+        <ul class="list-unstyled small">
+          <li><a href="services.html">Programmes</a></li>
+          <li><a href="book.html">Sessions</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h6 class="text-white fw-600 mb-3">Get in Touch</h6>
+        <ul class="list-unstyled small">
+          <li class="mb-2"><i class="fas fa-envelope me-2" style="color:var(--sc-gold);"></i><a href="mailto:Summitcraftleadership@outlook.com">Summitcraftleadership@outlook.com</a></li>
+          <li class="mb-2"><i class="fas fa-phone me-2" style="color:var(--sc-gold);"></i>07852 296233</li>
+          <li><i class="fab fa-linkedin me-2" style="color:var(--sc-gold);"></i><a href="https://www.linkedin.com/in/jesse-jackson943" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h6 class="text-white fw-600 mb-3">Admin</h6>
+        <ul class="list-unstyled small">
+          <li><a href="admin.html">Admin Portal</a></li>
+          <li><a href="privacy.html">Privacy Statement</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="row align-items-center">
+      <div class="col-md-6 text-center text-md-start small" style="color:rgba(255,255,255,0.4);">&copy; 2026 Summitcraft Leadership Ltd &nbsp;·&nbsp; Company No. 17148465</div>
+      <div class="col-md-6 text-center text-md-end mt-2 mt-md-0 small"><a href="privacy.html">Privacy Statement</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/scripts.js"></script>
+<script src="js/scl-api.js"></script>
+<script>
+(function () {
+  var sessions = [];
+  var selectedSession = null;
+  
+  var preselectProgramme = SCL.readQuery('programme');
+
+  function clearError(id) {
+    var el = document.getElementById('err-' + id);
+    if (el) el.classList.remove('visible');
+  }
+  function showError(id) {
+    var el = document.getElementById('err-' + id);
+    if (el) el.classList.add('visible');
+  }
+
+  function selectSession(sessionId) {
+    selectedSession = sessions.find(function (s) { return s.id === sessionId; });
+    document.getElementById('sessionId').value = selectedSession ? selectedSession.id : '';
+    document.querySelectorAll('.sc-session-card').forEach(function (card) {
+      card.classList.toggle('selected', card.getAttribute('data-session-id') === sessionId);
+    });
+    if (!selectedSession) {
+      document.getElementById('selectedSessionSummary').textContent = 'Please select a session first.';
+      return;
+    }
+    document.getElementById('participants').setAttribute('max', selectedSession.availableSpaces);
+    document.getElementById('selectedSessionSummary').innerHTML = '<strong>' + selectedSession.title + '</strong><br>' +
+      SCL.dateRange(selectedSession) + '<br>' +
+      selectedSession.location + '<br>' +
+      '<strong>Price:</strong> ' + SCL.money(selectedSession.pricePerParticipant) + ' per participant<br>' +
+      selectedSession.availableSpaces + ' space(s) available.';
+  }
+
+  function renderSessions() {
+    var list = document.getElementById('sessionList');
+    if (!sessions.length) {
+      list.innerHTML = '<div class="sc-alert sc-alert-warning">There are no available sessions at the moment. Please send an enquiry and we will contact you.</div>';
+      return;
+    }
+    list.innerHTML = '';
+    sessions.forEach(function (session) {
+      var disabled = session.availableSpaces <= 0;
+      var card = document.createElement('article');
+      card.className = 'sc-session-card';
+      card.setAttribute('data-session-id', session.id);
+      card.innerHTML =
+        '<div class="d-flex justify-content-between gap-3 flex-wrap">' +
+          '<div>' +
+            '<span class="sc-section-label">' + session.programme + '</span>' +
+            '<h3 class="fw-600 fs-5 mb-2">' + session.title + '</h3>' +
+          '</div>' +
+          '<div class="sc-spaces-badge ' + (disabled ? 'full' : '') + '">' + (disabled ? 'Full' : session.availableSpaces + ' spaces') + '</div>' +
+        '</div>' +
+        '<p class="text-muted small mb-2"><strong>Date/time:</strong> ' + SCL.dateRange(session) + '</p>' +
+        '<p class="text-muted small mb-2"><strong>Location:</strong> ' + (session.location || 'TBC') + '</p>' +
+        '<p class="text-muted small mb-2"><strong>Price:</strong> ' + SCL.money(session.pricePerParticipant) + ' per participant</p>' +
+        (session.notes ? '<p class="text-muted small mb-3">' + session.notes + '</p>' : '') +
+        '<button type="button" class="btn btn-outline-primary btn-sm" ' + (disabled ? 'disabled' : '') + '>Select Session</button>';
+      card.querySelector('button').addEventListener('click', function () { selectSession(session.id); });
+      list.appendChild(card);
+    });
+
+    if (preselectProgramme) {
+      var match = sessions.find(function (s) { return s.programme.toLowerCase() === preselectProgramme.toLowerCase() && s.availableSpaces > 0; });
+      if (match) selectSession(match.id);
+    }
+  }
+
+  function loadPage() {
+    Promise.all([
+      SCL.api('/api/public/settings'),
+      SCL.api('/api/public/sessions' + (preselectProgramme ? '?programme=' + encodeURIComponent(preselectProgramme) : ''))
+    ]).then(function (responses) {
+      sessions = responses[1].sessions || [];
+      SCL.setText('priceNotice', 'Prices are set per programme. Select a session to see its price; payment instructions are shown after booking.');
+      renderSessions();
+    }).catch(function (error) {
+      document.getElementById('sessionList').innerHTML = '<div class="sc-alert sc-alert-danger">' + error.message + '</div>';
+      SCL.setText('priceNotice', 'Unable to load current programme prices.');
+    });
+  }
+
+  document.getElementById('bookingForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    SCL.hide('bookingError');
+    ['fullName', 'email', 'participants', 'privacyConsent'].forEach(clearError);
+
+    var valid = true;
+    var fullName = SCL.getValue('fullName');
+    var email = SCL.getValue('email');
+    var participants = Number(SCL.getValue('participants') || 0);
+    var privacyConsent = document.getElementById('privacyConsent').checked;
+
+    if (!selectedSession) {
+      document.getElementById('bookingError').textContent = 'Please select a session before booking.';
+      SCL.show('bookingError');
+      return;
+    }
+    if (!fullName) { showError('fullName'); valid = false; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError('email'); valid = false; }
+    if (!participants || participants < 1 || participants > selectedSession.availableSpaces) { showError('participants'); valid = false; }
+    if (!privacyConsent) { showError('privacyConsent'); valid = false; }
+    if (!valid) return;
+
+    var submit = document.getElementById('bookingSubmit');
+    submit.disabled = true;
+    submit.textContent = 'Booking…';
+
+    SCL.api('/api/bookings', {
+      method: 'POST',
+      body: JSON.stringify({
+        sessionId: selectedSession.id,
+        fullName: fullName,
+        organisation: SCL.getValue('organisation'),
+        email: email,
+        phone: SCL.getValue('phone'),
+        participants: participants,
+        message: SCL.getValue('message'),
+        hearAbout: SCL.getValue('hearAbout'),
+        privacyConsent: privacyConsent,
+        website: SCL.getValue('bookingWebsite')
+      })
+    }).then(function (payload) {
+      sessionStorage.setItem('sclPaymentInfo', JSON.stringify(payload));
+      window.location.href = 'payment.html?ref=' + encodeURIComponent(payload.reference);
+    }).catch(function (error) {
+      document.getElementById('bookingError').textContent = error.message;
+      SCL.show('bookingError');
+    }).finally(function () {
+      submit.disabled = false;
+      submit.textContent = 'Book and Continue to Payment Instructions';
+    });
+  });
+
+  loadPage();
+})();
+</script>
+</body>
+</html>

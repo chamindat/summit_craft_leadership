@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="SummitCraft Leadership payment instructions." />
+  <title>Payment Instructions | SummitCraft Leadership</title>
+  <link href="css/styles.css" rel="stylesheet" />
+  <link href="css/brand.css" rel="stylesheet" />
+  <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<nav class="navbar navbar-marketing navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container px-5">
+    <a class="navbar-brand" href="index.html" aria-label="SummitCraft Leadership home">
+      <img src="assets/img/summitcraft-logo-wide.png" alt="SummitCraft Leadership">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Programmes</a></li>
+        <li class="nav-item"><a class="nav-link active" href="book.html">Sessions</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item ms-lg-2"><a class="nav-link nav-cta" href="contact.html">Enquire</a></li>
+        <li class="nav-item"><a class="nav-link nav-book" href="book.html">Book Now</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+
+<header class="sc-page-header text-center">
+  <div class="container px-5">
+    <span class="sc-section-label">Booking Received</span>
+    <h1 class="mb-0">Payment Instructions</h1>
+  </div>
+</header>
+
+<section class="py-7 bg-white">
+  <div class="container px-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div id="paymentPanel" class="card sc-card p-4 p-lg-5">
+          <div class="sc-loading">Loading payment information…</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="sc-footer py-5">
+  <div class="container px-5">
+    <div class="row g-4 mb-4">
+      <div class="col-lg-4">
+        <img src="assets/img/summitcraft-logo-wide.png" alt="SummitCraft Leadership" class="footer-logo">
+        <p class="small mb-0">Elevate Practice &nbsp;·&nbsp; Refine Leadership</p>
+      </div>
+      <div class="col-lg-2">
+        <h6 class="text-white fw-600 mb-3">Quick Links</h6>
+        <ul class="list-unstyled small">
+          <li><a href="services.html">Programmes</a></li>
+          <li><a href="book.html">Sessions</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h6 class="text-white fw-600 mb-3">Get in Touch</h6>
+        <ul class="list-unstyled small">
+          <li class="mb-2"><i class="fas fa-envelope me-2" style="color:var(--sc-gold);"></i><a href="mailto:Summitcraftleadership@outlook.com">Summitcraftleadership@outlook.com</a></li>
+          <li class="mb-2"><i class="fas fa-phone me-2" style="color:var(--sc-gold);"></i>07852 296233</li>
+          <li><i class="fab fa-linkedin me-2" style="color:var(--sc-gold);"></i><a href="https://www.linkedin.com/in/jesse-jackson943" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h6 class="text-white fw-600 mb-3">Admin</h6>
+        <ul class="list-unstyled small">
+          <li><a href="admin.html">Admin Portal</a></li>
+          <li><a href="privacy.html">Privacy Statement</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="row align-items-center">
+      <div class="col-md-6 text-center text-md-start small" style="color:rgba(255,255,255,0.4);">&copy; 2026 Summitcraft Leadership Ltd &nbsp;·&nbsp; Company No. 17148465</div>
+      <div class="col-md-6 text-center text-md-end mt-2 mt-md-0 small"><a href="privacy.html">Privacy Statement</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/scripts.js"></script>
+<script src="js/scl-api.js"></script>
+<script>
+(function () {
+  var panel = document.getElementById('paymentPanel');
+  var ref = SCL.readQuery('ref');
+  var payload = null;
+  try {
+    payload = JSON.parse(sessionStorage.getItem('sclPaymentInfo') || 'null');
+  } catch (e) {
+    payload = null;
+  }
+
+  if (!payload || (ref && payload.reference !== ref)) {
+    panel.innerHTML =
+      '<div class="sc-alert sc-alert-warning mb-0">' +
+      '<strong>Payment details are not available in this browser session.</strong><br>' +
+      'Please return to the booking page and submit your booking again, or contact SummitCraft Leadership quoting your name and email address.' +
+      '</div>';
+    return;
+  }
+
+  var payment = payload.payment || {};
+  var session = payload.session || {};
+  var lines = [
+    'SummitCraft Leadership payment instructions',
+    '',
+    'Payment reference: ' + payload.reference,
+    'Amount due: ' + SCL.money(payload.amountDue),
+    'Participants: ' + payload.participants,
+    'Price per participant: ' + SCL.money(payload.pricePerParticipant),
+    '',
+    'Session: ' + (session.title || ''),
+    'Programme: ' + (session.programme || ''),
+    'Date/time: ' + SCL.dateRange(session),
+    'Location: ' + (session.location || 'TBC'),
+    '',
+    'Account name: ' + (payment.accountName || ''),
+    'Bank: ' + (payment.bankName || ''),
+    'Sort code: ' + (payment.sortCode || ''),
+    'Account number: ' + (payment.accountNumber || ''),
+    '',
+    'Instructions: ' + (payment.instructions || ''),
+    '',
+    'Please use the payment reference exactly as shown.'
+  ];
+
+  panel.innerHTML =
+    '<div class="text-center mb-4">' +
+      '<i class="fas fa-check-circle mb-3 d-block" style="font-size:2.5rem;color:var(--gold-primary);"></i>' +
+      '<span class="sc-section-label">Your booking has been recorded</span>' +
+      '<h2 class="mb-2">Use these details to make payment</h2>' +
+      '<p class="text-muted mb-0">Please keep a copy of this page for your records.</p>' +
+    '</div>' +
+    '<div class="sc-payment-reference mb-4">' + payload.reference + '</div>' +
+    '<div class="row g-4">' +
+      '<div class="col-md-6"><div class="sc-payment-box"><span>Amount Due</span><strong>' + SCL.money(payload.amountDue) + '</strong></div></div>' +
+      '<div class="col-md-6"><div class="sc-payment-box"><span>Participants</span><strong>' + payload.participants + '</strong></div></div>' +
+    '</div>' +
+    '<hr class="my-4">' +
+    '<h3 class="fw-600 fs-5 mb-3">Session</h3>' +
+    '<p class="text-muted mb-1"><strong>' + (session.title || '') + '</strong></p>' +
+    '<p class="text-muted mb-1">' + SCL.dateRange(session) + '</p>' +
+    '<p class="text-muted mb-4">' + (session.location || 'TBC') + '</p>' +
+    '<h3 class="fw-600 fs-5 mb-3">Bank transfer details</h3>' +
+    '<div class="sc-bank-details">' +
+      '<div><span>Account name</span><strong>' + (payment.accountName || '') + '</strong></div>' +
+      '<div><span>Bank</span><strong>' + (payment.bankName || '') + '</strong></div>' +
+      '<div><span>Sort code</span><strong>' + (payment.sortCode || '') + '</strong></div>' +
+      '<div><span>Account number</span><strong>' + (payment.accountNumber || '') + '</strong></div>' +
+    '</div>' +
+    '<div class="sc-alert sc-alert-info mt-4">' + (payment.instructions || '') + '<br><strong>Use reference: ' + payload.reference + '</strong></div>' +
+    '<div class="d-flex flex-wrap gap-3 mt-4">' +
+      '<button type="button" class="btn btn-primary" id="downloadPayment">Download Payment Information</button>' +
+      '<button type="button" class="btn btn-outline-primary" id="printPayment">Print</button>' +
+      '<a href="book.html" class="btn btn-outline-primary">Book Another Session</a>' +
+    '</div>';
+
+  document.getElementById('downloadPayment').addEventListener('click', function () {
+    SCL.downloadText('SummitCraft-payment-' + payload.reference + '.txt', lines.join('\n'));
+  });
+  document.getElementById('printPayment').addEventListener('click', function () {
+    window.print();
+  });
+})();
+</script>
+</body>
+</html>

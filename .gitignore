@@ -1,0 +1,12 @@
+# Local/server secrets
+api/config.php
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs and exports
+*.log
+*.csv

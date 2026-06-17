@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="Contact SummitCraft Leadership — get in touch to discuss our leadership programmes." />
+  <title>Contact | SummitCraft Leadership</title>
+  <link href="css/styles.css" rel="stylesheet" />
+  <link href="css/brand.css" rel="stylesheet" />
+  <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<!-- ── Navbar ── -->
+<nav class="navbar navbar-marketing navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container px-5">
+    <a class="navbar-brand" href="index.html" aria-label="SummitCraft Leadership home">
+      <img src="assets/img/summitcraft-logo-wide.png" alt="SummitCraft Leadership">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Programmes</a></li>
+        <li class="nav-item"><a class="nav-link" href="book.html">Sessions</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+        <li class="nav-item ms-lg-2"><a class="nav-link nav-cta" href="contact.html">Enquire</a></li>
+        <li class="nav-item"><a class="nav-link nav-book" href="book.html">Book Now</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+
+<!-- ── Page header ── -->
+<header class="sc-page-header text-center">
+  <div class="container px-5">
+    <span class="sc-section-label">Get in Touch</span>
+    <h1 class="mb-0">Contact Us</h1>
+  </div>
+</header>
+
+<!-- ── Contact content ── -->
+<section class="py-7 bg-white">
+  <div class="container px-5">
+    <div class="row justify-content-center g-5">
+
+      <!-- Enquiry form -->
+      <div class="col-lg-6">
+        <h2 class="mb-2">Send an Enquiry</h2>
+        <span class="sc-divider left"></span>
+        <p class="text-muted mb-4">We aim to respond within one business day. If you already know which programme you want, you can also <a href="book.html">book a session directly</a>.</p>
+
+        <form id="contactForm" class="sc-form" novalidate>
+
+          <div id="formFields">
+
+            <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+              <label for="website">Leave this field empty</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="mb-3">
+              <label for="fullName">Full Name <span style="color:#CC0000;">*</span></label>
+              <input type="text" class="form-control" id="fullName" name="fullName" required autocomplete="name">
+              <div class="sc-field-error" id="err-fullName">Please enter your full name.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="organisation">Organisation <span class="text-muted fw-400" style="font-size:12px;">(optional)</span></label>
+              <input type="text" class="form-control" id="organisation" name="organisation" autocomplete="organization">
+            </div>
+
+            <div class="mb-3">
+              <label for="email">Email Address <span style="color:#CC0000;">*</span></label>
+              <input type="email" class="form-control" id="email" name="email" required autocomplete="email">
+              <div class="sc-field-error" id="err-email">Please enter a valid email address.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="phone">Phone Number <span class="text-muted fw-400" style="font-size:12px;">(optional)</span></label>
+              <input type="tel" class="form-control" id="phone" name="phone" autocomplete="tel">
+            </div>
+
+            <div class="mb-3">
+              <label for="programme">Programme or service of interest <span class="text-muted fw-400" style="font-size:12px;">(optional)</span></label>
+              <select class="form-select" id="programme" name="programme">
+                <option value="">Please select…</option>
+                <option value="The Ascent">The Ascent</option>
+                <option value="The Ridgeline">The Ridgeline</option>
+                <option value="The Summit">The Summit</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="message">How can we help? <span style="color:#CC0000;">*</span></label>
+              <textarea class="form-control" id="message" name="message" rows="5" required minlength="20"></textarea>
+              <div class="sc-field-error" id="err-message">Please tell us a bit about how we can help (at least 20 characters).</div>
+            </div>
+
+            <div class="mb-4">
+              <label for="hearAbout">How did you hear about us?</label>
+              <select class="form-select" id="hearAbout" name="hearAbout">
+                <option value="">Please select…</option>
+                <option value="LinkedIn">LinkedIn</option>
+                <option value="Referral">Referral</option>
+                <option value="Google Search">Google Search</option>
+                <option value="Event">Event</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-check mb-4">
+              <input class="form-check-input" type="checkbox" id="privacyConsent" required>
+              <label class="form-check-label small" for="privacyConsent">I agree that SummitCraft Leadership may use my details to respond to this enquiry, in line with the <a href="privacy.html" target="_blank" rel="noopener">Privacy Statement</a>. <span style="color:#CC0000;">*</span></label>
+              <div class="sc-field-error" id="err-privacyConsent">Please confirm that you agree to the privacy statement.</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg w-100">Send Enquiry</button>
+
+          </div>
+
+          <div class="sc-form-success" id="formSuccess">
+            <i class="fas fa-check-circle mb-3 d-block" style="font-size:2.5rem;color:var(--gold-primary);"></i>
+            Thank you — your enquiry has been sent.<br>We'll be in touch within one business day.
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Contact details -->
+      <div class="col-lg-5 col-xl-4">
+        <h2 class="mb-2">Contact Details</h2>
+        <span class="sc-divider left"></span>
+
+        <div class="sc-contact-item mt-4">
+          <div class="sc-contact-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <div class="fw-600 small text-uppercase mb-1" style="letter-spacing:.08em;font-family:var(--font-body);">Email</div>
+            <a href="mailto:Summitcraftleadership@outlook.com" class="text-dark" style="font-family:var(--font-body);">Summitcraftleadership@outlook.com</a>
+          </div>
+        </div>
+
+        <div class="sc-contact-item">
+          <div class="sc-contact-icon"><i class="fas fa-phone"></i></div>
+          <div>
+            <div class="fw-600 small text-uppercase mb-1" style="letter-spacing:.08em;font-family:var(--font-body);">Phone</div>
+            <a href="tel:07852296233" class="text-dark" style="font-family:var(--font-body);">07852 296233</a>
+          </div>
+        </div>
+
+        <div class="sc-contact-item">
+          <div class="sc-contact-icon"><i class="fab fa-linkedin"></i></div>
+          <div>
+            <div class="fw-600 small text-uppercase mb-1" style="letter-spacing:.08em;font-family:var(--font-body);">LinkedIn</div>
+            <a href="https://www.linkedin.com/in/jesse-jackson943" target="_blank" rel="noopener" style="font-family:var(--font-body);">jesse-jackson943</a>
+          </div>
+        </div>
+
+        <div class="sc-contact-item">
+          <div class="sc-contact-icon"><i class="fas fa-building"></i></div>
+          <div>
+            <div class="fw-600 small text-uppercase mb-1" style="letter-spacing:.08em;font-family:var(--font-body);">Company Registration</div>
+            <span class="text-muted" style="font-family:var(--font-body);">17148465</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ── Footer ── -->
+<footer class="sc-footer py-5">
+  <div class="container px-5">
+    <div class="row g-4 mb-4">
+      <div class="col-lg-4">
+        <img src="assets/img/summitcraft-logo-wide.png" alt="SummitCraft Leadership" class="footer-logo">
+        <p class="small mb-0">Elevate Practice &nbsp;·&nbsp; Refine Leadership</p>
+      </div>
+      <div class="col-lg-2">
+        <h6 class="text-white fw-600 mb-3">Quick Links</h6>
+        <ul class="list-unstyled small">
+          <li><a href="services.html">Programmes</a></li>
+          <li><a href="book.html">Sessions</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h6 class="text-white fw-600 mb-3">Get in Touch</h6>
+        <ul class="list-unstyled small">
+          <li class="mb-2"><i class="fas fa-envelope me-2" style="color:var(--sc-gold);"></i><a href="mailto:Summitcraftleadership@outlook.com">Summitcraftleadership@outlook.com</a></li>
+          <li class="mb-2"><i class="fas fa-phone me-2" style="color:var(--sc-gold);"></i>07852 296233</li>
+          <li><i class="fab fa-linkedin me-2" style="color:var(--sc-gold);"></i><a href="https://www.linkedin.com/in/jesse-jackson943" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h6 class="text-white fw-600 mb-3">Admin</h6>
+        <ul class="list-unstyled small">
+          <li><a href="admin.html">Admin Portal</a></li>
+          <li><a href="privacy.html">Privacy Statement</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="row align-items-center">
+      <div class="col-md-6 text-center text-md-start small" style="color:rgba(255,255,255,0.4);">&copy; 2026 Summitcraft Leadership Ltd &nbsp;·&nbsp; Company No. 17148465</div>
+      <div class="col-md-6 text-center text-md-end mt-2 mt-md-0 small"><a href="privacy.html">Privacy Statement</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/scripts.js"></script>
+<script src="js/scl-api.js"></script>
+<script>
+  (function () {
+    var form = document.getElementById('contactForm');
+    if (!form) return;
+
+    function showError(id) {
+      var el = document.getElementById('err-' + id);
+      if (el) el.classList.add('visible');
+    }
+    function clearError(id) {
+      var el = document.getElementById('err-' + id);
+      if (el) el.classList.remove('visible');
+    }
+
+    var queryProgramme = SCL.readQuery('programme');
+    if (queryProgramme && document.getElementById('programme')) {
+      document.getElementById('programme').value = queryProgramme;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var valid = true;
+
+      var name = document.getElementById('fullName').value.trim();
+      clearError('fullName');
+      if (!name) { showError('fullName'); valid = false; }
+
+      var email = document.getElementById('email').value.trim();
+      clearError('email');
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError('email'); valid = false; }
+
+      var msg = document.getElementById('message').value.trim();
+      clearError('message');
+      if (!msg || msg.length < 20) { showError('message'); valid = false; }
+
+      clearError('privacyConsent');
+      var privacyConsent = document.getElementById('privacyConsent').checked;
+      if (!privacyConsent) { showError('privacyConsent'); valid = false; }
+
+      if (!valid) return;
+
+      var submit = form.querySelector('button[type="submit"]');
+      submit.disabled = true;
+      submit.textContent = 'Sending…';
+
+      SCL.api('/api/enquiries', {
+        method: 'POST',
+        body: JSON.stringify({
+          fullName: name,
+          organisation: document.getElementById('organisation').value.trim(),
+          email: email,
+          phone: document.getElementById('phone').value.trim(),
+          programme: document.getElementById('programme').value,
+          message: msg,
+          hearAbout: document.getElementById('hearAbout').value,
+          privacyConsent: privacyConsent,
+          website: SCL.getValue('website')
+        })
+      }).then(function () {
+        document.getElementById('formFields').style.display = 'none';
+        var success = document.getElementById('formSuccess');
+        success.style.display = 'block';
+      }).catch(function (error) {
+        alert(error.message);
+      }).finally(function () {
+        submit.disabled = false;
+        submit.textContent = 'Send Enquiry';
+      });
+    });
+  })();
+</script>
+</body>
+</html>

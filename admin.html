@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="SummitCraft Leadership administration portal." />
+  <title>Admin Portal | SummitCraft Leadership</title>
+  <link href="css/styles.css" rel="stylesheet" />
+  <link href="css/brand.css" rel="stylesheet" />
+  <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<nav class="navbar navbar-marketing navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container px-5">
+    <a class="navbar-brand" href="index.html" aria-label="SummitCraft Leadership home">
+      <img src="assets/img/summitcraft-logo-wide.png" alt="SummitCraft Leadership">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Programmes</a></li>
+        <li class="nav-item"><a class="nav-link" href="book.html">Sessions</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item ms-lg-2"><a class="nav-link nav-cta" href="contact.html">Enquire</a></li>
+        <li class="nav-item"><a class="nav-link nav-book" href="book.html">Book Now</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+
+<header class="sc-page-header text-center">
+  <div class="container px-5">
+    <span class="sc-section-label">Provider Area</span>
+    <h1 class="mb-0">Administration Portal</h1>
+  </div>
+</header>
+
+<section class="py-7 bg-white">
+  <div class="container px-5">
+    <div id="adminLogin" class="row justify-content-center">
+      <div class="col-lg-5">
+        <div class="card sc-card p-4 p-lg-5">
+          <span class="sc-section-label">Admin Login</span>
+          <h2 class="mb-2">Sign in</h2>
+          <span class="sc-divider left"></span>
+          <p class="text-muted small">Use the local credentials from <code>api/config.php</code> during development only. Change the admin password hash and app secret before publishing the site.</p>
+          <form id="loginForm" class="sc-form">
+            <div class="mb-3">
+              <label for="adminUsername">Username</label>
+              <input type="text" id="adminUsername" class="form-control" autocomplete="username">
+            </div>
+            <div class="mb-3">
+              <label for="adminPassword">Password</label>
+              <input type="password" id="adminPassword" class="form-control" autocomplete="current-password">
+            </div>
+            <div id="loginError" class="sc-alert sc-alert-danger" style="display:none;"></div>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="adminApp" style="display:none;">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+        <div>
+          <span class="sc-section-label">Logged In</span>
+          <h2 class="mb-0">Manage SummitCraft</h2>
+        </div>
+        <button type="button" id="logoutBtn" class="btn btn-outline-primary">Logout</button>
+      </div>
+      <div id="defaultPasswordWarning" class="sc-alert sc-alert-warning" style="display:none;">
+        The default admin password is still in use. Change the admin password hash and security app secret in <code>api/config.php</code> before going live.
+      </div>
+
+      <div class="sc-admin-tabs mb-4">
+        <button type="button" class="active" data-admin-tab="dashboard">Dashboard</button>
+        <button type="button" data-admin-tab="sessions">Sessions</button>
+        <button type="button" data-admin-tab="enquiries">Enquiries</button>
+        <button type="button" data-admin-tab="bookings">Bookings</button>
+        <button type="button" data-admin-tab="settings">Price &amp; Payment</button>
+        <button type="button" data-admin-tab="audit">Audit Log</button>
+      </div>
+
+      <section id="tab-dashboard" class="sc-admin-panel active">
+        <div class="row g-4" id="dashboardCards"></div>
+      </section>
+
+      <section id="tab-sessions" class="sc-admin-panel">
+        <div class="row g-5">
+          <div class="col-lg-5">
+            <div class="card sc-card p-4">
+              <span class="sc-section-label">Add / Edit</span>
+              <h3 class="fw-600 fs-5 mb-3">Session details</h3>
+              <form id="sessionForm" class="sc-form">
+                <input type="hidden" id="sessionEditId">
+                <div class="mb-3">
+                  <label for="sessionProgramme">Programme</label>
+                  <select id="sessionProgramme" class="form-select">
+                    <option>The Ascent</option>
+                    <option>The Ridgeline</option>
+                    <option>The Summit</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="sessionTitle">Session title</label>
+                  <input id="sessionTitle" class="form-control" required>
+                </div>
+                <div class="row g-3">
+                  <div class="col-md-6 mb-3"><label for="sessionStartDate">Start date</label><input id="sessionStartDate" type="date" class="form-control" required></div>
+                  <div class="col-md-6 mb-3"><label for="sessionStartTime">Start time</label><input id="sessionStartTime" type="time" class="form-control" required></div>
+                  <div class="col-md-6 mb-3"><label for="sessionEndDate">End date</label><input id="sessionEndDate" type="date" class="form-control" required></div>
+                  <div class="col-md-6 mb-3"><label for="sessionEndTime">End time</label><input id="sessionEndTime" type="time" class="form-control" required></div>
+                </div>
+                <div class="mb-3">
+                  <label for="sessionLocation">Location</label>
+                  <input id="sessionLocation" class="form-control" placeholder="e.g. Peak District, UK">
+                </div>
+                <div class="mb-3">
+                  <label for="sessionCapacity">Capacity</label>
+                  <input id="sessionCapacity" type="number" min="0" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label for="sessionNotes">Notes</label>
+                  <textarea id="sessionNotes" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="form-check mb-3">
+                  <input id="sessionActive" class="form-check-input" type="checkbox" checked>
+                  <label class="form-check-label" for="sessionActive">Active and visible for booking</label>
+                </div>
+                <div id="sessionFormMessage" class="sc-alert" style="display:none;"></div>
+                <div class="d-flex gap-2 flex-wrap">
+                  <button type="submit" class="btn btn-primary">Save Session</button>
+                  <button type="button" id="clearSessionForm" class="btn btn-outline-primary">Clear</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3">
+              <h3 class="fw-600 fs-5 mb-0">Current sessions</h3>
+              <button type="button" class="btn btn-outline-primary btn-sm" id="refreshSessions">Refresh</button>
+            </div>
+            <div class="table-responsive sc-admin-table-wrap"><table class="table sc-admin-table"><thead><tr><th>Session</th><th>Date</th><th>Price</th><th>Spaces</th><th>Status</th><th>Actions</th></tr></thead><tbody id="sessionsTable"></tbody></table></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-enquiries" class="sc-admin-panel">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3">
+          <h3 class="fw-600 fs-5 mb-0">Enquiries</h3>
+          <button type="button" class="btn btn-outline-primary btn-sm" id="exportEnquiries">Download CSV</button>
+        </div>
+        <div class="table-responsive sc-admin-table-wrap"><table class="table sc-admin-table"><thead><tr><th>Date</th><th>Name</th><th>Contact</th><th>Programme</th><th>Message</th></tr></thead><tbody id="enquiriesTable"></tbody></table></div>
+      </section>
+
+      <section id="tab-bookings" class="sc-admin-panel">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3">
+          <h3 class="fw-600 fs-5 mb-0">Bookings</h3>
+          <button type="button" class="btn btn-outline-primary btn-sm" id="exportBookings">Download CSV</button>
+        </div>
+        <div class="table-responsive sc-admin-table-wrap"><table class="table sc-admin-table"><thead><tr><th>Date</th><th>Reference</th><th>Name</th><th>Session</th><th>Participants</th><th>Amount</th><th>Status</th></tr></thead><tbody id="bookingsTable"></tbody></table></div>
+      </section>
+
+      <section id="tab-settings" class="sc-admin-panel">
+        <div class="row justify-content-center">
+          <div class="col-lg-7">
+            <div class="card sc-card p-4 p-lg-5">
+              <span class="sc-section-label">Payment</span>
+              <h3 class="fw-600 fs-5 mb-3">Programme prices and bank details</h3>
+              <form id="settingsForm" class="sc-form">
+                <input type="hidden" id="pricePerParticipant" value="95.00">
+                <div class="mb-4">
+                  <label class="d-block mb-2">Programme prices per participant (£)</label>
+                  <div id="programmePriceList" class="row g-3"></div>
+                  <div class="form-text mt-2">There are exactly three bookable programmes: The Ascent, The Ridgeline and The Summit. Admin can create multiple sessions on different dates for each programme; all sessions for the same programme use that programme price.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="paymentAccountName">Account name</label>
+                  <input type="text" id="paymentAccountName" class="form-control">
+                </div>
+                <div class="mb-3">
+                  <label for="paymentBankName">Bank name</label>
+                  <input type="text" id="paymentBankName" class="form-control">
+                </div>
+                <div class="row g-3">
+                  <div class="col-md-6 mb-3"><label for="paymentSortCode">Sort code</label><input type="text" id="paymentSortCode" class="form-control"></div>
+                  <div class="col-md-6 mb-3"><label for="paymentAccountNumber">Account number</label><input type="text" id="paymentAccountNumber" class="form-control"></div>
+                </div>
+                <div class="mb-3">
+                  <label for="paymentInstructions">Payment instructions</label>
+                  <textarea id="paymentInstructions" class="form-control" rows="4"></textarea>
+                </div>
+                <div id="settingsMessage" class="sc-alert" style="display:none;"></div>
+                <button type="submit" class="btn btn-primary">Save Programme Prices &amp; Payment Settings</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-audit" class="sc-admin-panel">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3">
+          <h3 class="fw-600 fs-5 mb-0">Recent admin activity</h3>
+          <button type="button" class="btn btn-outline-primary btn-sm" id="refreshAudit">Refresh</button>
+        </div>
+        <div class="table-responsive sc-admin-table-wrap"><table class="table sc-admin-table"><thead><tr><th>Date</th><th>Admin</th><th>Action</th><th>Item</th><th>Details</th></tr></thead><tbody id="auditTable"></tbody></table></div>
+      </section>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="sc-footer py-5">
+  <div class="container px-5">
+    <div class="row g-4 mb-4">
+      <div class="col-lg-4">
+        <img src="assets/img/summitcraft-logo-wide.png" alt="SummitCraft Leadership" class="footer-logo">
+        <p class="small mb-0">Elevate Practice &nbsp;·&nbsp; Refine Leadership</p>
+      </div>
+      <div class="col-lg-2">
+        <h6 class="text-white fw-600 mb-3">Quick Links</h6>
+        <ul class="list-unstyled small">
+          <li><a href="services.html">Programmes</a></li>
+          <li><a href="book.html">Sessions</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h6 class="text-white fw-600 mb-3">Get in Touch</h6>
+        <ul class="list-unstyled small">
+          <li class="mb-2"><i class="fas fa-envelope me-2" style="color:var(--sc-gold);"></i><a href="mailto:Summitcraftleadership@outlook.com">Summitcraftleadership@outlook.com</a></li>
+          <li class="mb-2"><i class="fas fa-phone me-2" style="color:var(--sc-gold);"></i>07852 296233</li>
+          <li><i class="fab fa-linkedin me-2" style="color:var(--sc-gold);"></i><a href="https://www.linkedin.com/in/jesse-jackson943" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h6 class="text-white fw-600 mb-3">Admin</h6>
+        <ul class="list-unstyled small">
+          <li><a href="admin.html">Admin Portal</a></li>
+          <li><a href="privacy.html">Privacy Statement</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="row align-items-center">
+      <div class="col-md-6 text-center text-md-start small" style="color:rgba(255,255,255,0.4);">&copy; 2026 Summitcraft Leadership Ltd &nbsp;·&nbsp; Company No. 17148465</div>
+      <div class="col-md-6 text-center text-md-end mt-2 mt-md-0 small"><a href="privacy.html">Privacy Statement</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/scripts.js"></script>
+<script src="js/scl-api.js"></script>
+<script>
+(function () {
+  var csrfToken = sessionStorage.getItem('sclAdminCsrf') || '';
+  var sessions = [];
+  var PROGRAMMES = ['The Ascent', 'The Ridgeline', 'The Summit'];
+
+  function needsCsrf(method) {
+    method = (method || 'GET').toUpperCase();
+    return ['POST', 'PUT', 'PATCH', 'DELETE'].indexOf(method) !== -1;
+  }
+
+  function authApi(path, options) {
+    var opts = Object.assign({}, options || {});
+    var method = (opts.method || 'GET').toUpperCase();
+    if (needsCsrf(method)) opts.csrfToken = csrfToken;
+    return SCL.api(path, opts).then(function (payload) {
+      if (payload && payload.csrfToken) {
+        csrfToken = payload.csrfToken;
+        sessionStorage.setItem('sclAdminCsrf', csrfToken);
+      }
+      return payload;
+    });
+  }
+
+  function cell(text) {
+    var td = document.createElement('td');
+    td.textContent = text == null ? '' : text;
+    return td;
+  }
+
+  function small(text) {
+    var div = document.createElement('div');
+    div.className = 'text-muted small';
+    div.textContent = text || '';
+    return div;
+  }
+
+  function showLogin() {
+    SCL.show('adminLogin');
+    SCL.hide('adminApp');
+  }
+
+  function showApp() {
+    SCL.hide('adminLogin');
+    SCL.show('adminApp');
+    loadAll();
+  }
+
+  function flash(id, message, type) {
+    var el = document.getElementById(id);
+    el.className = 'sc-alert sc-alert-' + (type || 'info');
+    el.textContent = message;
+    SCL.show(el);
+  }
+
+  function renderDashboard(data) {
+    var cards = [
+      ['Enquiries', data.enquiries],
+      ['Bookings', data.bookings],
+      ['Active sessions', data.activeSessions],
+      ['Booked participants', data.bookedParticipants],
+      ['Pending payments', data.pendingPayments],
+      ['Paid bookings', data.paidBookings]
+    ];
+    var wrap = document.getElementById('dashboardCards');
+    wrap.innerHTML = '';
+    cards.forEach(function (item) {
+      var col = document.createElement('div');
+      col.className = 'col-md-4 col-xl';
+      col.innerHTML = '<div class="sc-admin-stat"><span></span><strong></strong></div>';
+      col.querySelector('span').textContent = item[0];
+      col.querySelector('strong').textContent = item[1];
+      wrap.appendChild(col);
+    });
+  }
+
+  function renderSessions(payload) {
+    sessions = payload.sessions || [];
+    var tbody = document.getElementById('sessionsTable');
+    tbody.innerHTML = '';
+    sessions.forEach(function (session) {
+      var tr = document.createElement('tr');
+      var titleCell = cell(session.title);
+      titleCell.appendChild(small(session.programme + ' · ' + (session.location || 'TBC')));
+      tr.appendChild(titleCell);
+      tr.appendChild(cell(SCL.dateRange(session)));
+      tr.appendChild(cell(SCL.money(session.pricePerParticipant)));
+      tr.appendChild(cell(session.availableSpaces + ' / ' + session.capacity));
+      tr.appendChild(cell(session.active ? 'Active' : 'Inactive'));
+      var actions = document.createElement('td');
+      var editBtn = document.createElement('button');
+      editBtn.type = 'button';
+      editBtn.className = 'btn btn-outline-primary btn-sm me-2 mb-2';
+      editBtn.textContent = 'Edit';
+      editBtn.addEventListener('click', function () { fillSessionForm(session); });
+      var deactivateBtn = document.createElement('button');
+      deactivateBtn.type = 'button';
+      deactivateBtn.className = 'btn btn-outline-primary btn-sm mb-2';
+      deactivateBtn.textContent = 'Deactivate';
+      deactivateBtn.disabled = !session.active;
+      deactivateBtn.addEventListener('click', function () { deactivateSession(session.id); });
+      actions.appendChild(editBtn);
+      actions.appendChild(deactivateBtn);
+      tr.appendChild(actions);
+      tbody.appendChild(tr);
+    });
+  }
+
+  function renderEnquiries(payload) {
+    var tbody = document.getElementById('enquiriesTable');
+    tbody.innerHTML = '';
+    (payload.enquiries || []).forEach(function (e) {
+      var tr = document.createElement('tr');
+      tr.appendChild(cell(new Date(e.createdAt).toLocaleString('en-GB')));
+      var name = cell(e.fullName);
+      name.appendChild(small(e.organisation));
+      tr.appendChild(name);
+      var contact = cell(e.email);
+      contact.appendChild(small(e.phone));
+      tr.appendChild(contact);
+      tr.appendChild(cell(e.programme));
+      var message = cell(e.message);
+      message.appendChild(small(e.privacyConsent ? 'Privacy consent recorded' : 'No privacy consent flag'));
+      tr.appendChild(message);
+      tbody.appendChild(tr);
+    });
+  }
+
+  function renderBookings(payload) {
+    var tbody = document.getElementById('bookingsTable');
+    tbody.innerHTML = '';
+    (payload.bookings || []).forEach(function (b) {
+      var tr = document.createElement('tr');
+      tr.appendChild(cell(new Date(b.createdAt).toLocaleString('en-GB')));
+      tr.appendChild(cell(b.paymentReference));
+      var name = cell(b.fullName);
+      name.appendChild(small([b.email, b.phone].filter(Boolean).join(' · ')));
+      tr.appendChild(name);
+      var session = cell(b.sessionTitle);
+      session.appendChild(small(SCL.dateRange({ startDate: b.sessionStartDate, startTime: b.sessionStartTime, endDate: b.sessionEndDate, endTime: b.sessionEndTime }) + ' · ' + (b.sessionLocation || 'TBC')));
+      tr.appendChild(session);
+      tr.appendChild(cell(b.participants));
+      tr.appendChild(cell(SCL.money(b.amountDue)));
+      var statusCell = document.createElement('td');
+      var select = document.createElement('select');
+      select.className = 'form-select form-select-sm';
+      ['pending_payment', 'paid', 'cancelled', 'attended', 'refunded'].forEach(function (status) {
+        var option = document.createElement('option');
+        option.value = status;
+        option.textContent = status.replace('_', ' ');
+        option.selected = status === b.status;
+        select.appendChild(option);
+      });
+      select.addEventListener('change', function () {
+        authApi('/api/admin/bookings/' + b.id, { method: 'PUT', body: JSON.stringify({ status: select.value }) })
+          .then(loadBookings)
+          .then(loadDashboard)
+          .then(loadAudit)
+          .catch(function (error) { alert(error.message); });
+      });
+      statusCell.appendChild(select);
+      if (b.paymentReceivedAt) statusCell.appendChild(small('Paid: ' + new Date(b.paymentReceivedAt).toLocaleString('en-GB')));
+      tr.appendChild(statusCell);
+      tbody.appendChild(tr);
+    });
+  }
+
+  function renderAudit(payload) {
+    var tbody = document.getElementById('auditTable');
+    tbody.innerHTML = '';
+    (payload.logs || []).forEach(function (log) {
+      var tr = document.createElement('tr');
+      tr.appendChild(cell(new Date(log.createdAt).toLocaleString('en-GB')));
+      tr.appendChild(cell(log.adminUsername));
+      tr.appendChild(cell(log.action));
+      tr.appendChild(cell([log.entityType, log.entityId].filter(Boolean).join(' · ')));
+      tr.appendChild(cell(JSON.stringify(log.details || {})));
+      tbody.appendChild(tr);
+    });
+  }
+
+  function fillSessionForm(session) {
+    document.getElementById('sessionEditId').value = session.id;
+    document.getElementById('sessionProgramme').value = session.programme;
+    document.getElementById('sessionTitle').value = session.title;
+    document.getElementById('sessionStartDate').value = session.startDate;
+    document.getElementById('sessionStartTime').value = session.startTime;
+    document.getElementById('sessionEndDate').value = session.endDate;
+    document.getElementById('sessionEndTime').value = session.endTime;
+    document.getElementById('sessionLocation').value = session.location || '';
+    document.getElementById('sessionCapacity').value = session.capacity;
+    document.getElementById('sessionNotes').value = session.notes || '';
+    document.getElementById('sessionActive').checked = Boolean(session.active);
+    document.getElementById('sessionTitle').focus();
+  }
+
+  function clearSessionForm() {
+    document.getElementById('sessionEditId').value = '';
+    document.getElementById('sessionProgramme').value = 'The Ascent';
+    document.getElementById('sessionTitle').value = '';
+    document.getElementById('sessionStartDate').value = '';
+    document.getElementById('sessionStartTime').value = '';
+    document.getElementById('sessionEndDate').value = '';
+    document.getElementById('sessionEndTime').value = '';
+    document.getElementById('sessionLocation').value = '';
+    document.getElementById('sessionCapacity').value = '';
+    document.getElementById('sessionNotes').value = '';
+    document.getElementById('sessionActive').checked = true;
+    SCL.hide('sessionFormMessage');
+  }
+
+  function sessionPayload() {
+    return {
+      programme: SCL.getValue('sessionProgramme'),
+      title: SCL.getValue('sessionTitle'),
+      startDate: SCL.getValue('sessionStartDate'),
+      startTime: SCL.getValue('sessionStartTime'),
+      endDate: SCL.getValue('sessionEndDate'),
+      endTime: SCL.getValue('sessionEndTime'),
+      location: SCL.getValue('sessionLocation'),
+      capacity: Number(SCL.getValue('sessionCapacity') || 0),
+      notes: SCL.getValue('sessionNotes'),
+      active: document.getElementById('sessionActive').checked
+    };
+  }
+
+  function deactivateSession(id) {
+    if (!confirm('Deactivate this session? It will no longer appear on the booking page.')) return;
+    authApi('/api/admin/sessions/' + id, { method: 'DELETE' })
+      .then(function () { return Promise.all([loadSessions(), loadDashboard(), loadAudit()]); })
+      .catch(function (error) { alert(error.message); });
+  }
+
+  function loadDashboard() { return authApi('/api/admin/dashboard').then(renderDashboard); }
+  function loadSessions() { return authApi('/api/admin/sessions').then(renderSessions); }
+  function loadEnquiries() { return authApi('/api/admin/enquiries').then(renderEnquiries); }
+  function loadBookings() { return authApi('/api/admin/bookings').then(renderBookings); }
+  function loadAudit() { return authApi('/api/admin/audit').then(renderAudit); }
+
+  function programmeNamesFromAdminOptions(programmePrices) {
+    return PROGRAMMES.slice();
+  }
+
+  function renderProgrammePrices(programmePrices, fallbackPrice) {
+    var container = document.getElementById('programmePriceList');
+    var prices = {};
+    (programmePrices || []).forEach(function (entry) {
+      prices[entry.programme] = Number(entry.pricePerParticipant || fallbackPrice || 0);
+    });
+    container.innerHTML = '';
+    programmeNamesFromAdminOptions(programmePrices).forEach(function (programme) {
+      var col = document.createElement('div');
+      col.className = 'col-md-6';
+      var id = 'programmePrice_' + programme.replace(/[^a-z0-9]+/gi, '_');
+      col.innerHTML = '<label for="' + id + '"></label><input type="number" class="form-control programme-price-input" min="0" step="0.01" required>';
+      col.querySelector('label').textContent = programme;
+      var input = col.querySelector('input');
+      input.id = id;
+      input.setAttribute('data-programme', programme);
+      input.value = prices[programme] || fallbackPrice || 0;
+      container.appendChild(col);
+    });
+  }
+
+  function collectProgrammePrices() {
+    return Array.prototype.map.call(document.querySelectorAll('.programme-price-input'), function (input) {
+      return {
+        programme: input.getAttribute('data-programme'),
+        pricePerParticipant: Number(input.value || 0)
+      };
+    });
+  }
+
+  function loadSettings() {
+    return authApi('/api/admin/settings').then(function (payload) {
+      var s = payload.settings || {};
+      var p = s.payment || {};
+      var fallback = Number(s.defaultPricePerParticipant || s.pricePerParticipant || 0);
+      document.getElementById('pricePerParticipant').value = fallback;
+      renderProgrammePrices(s.programmePrices || [], fallback);
+      document.getElementById('paymentAccountName').value = p.accountName || '';
+      document.getElementById('paymentBankName').value = p.bankName || '';
+      document.getElementById('paymentSortCode').value = p.sortCode || '';
+      document.getElementById('paymentAccountNumber').value = p.accountNumber || '';
+      document.getElementById('paymentInstructions').value = p.instructions || '';
+    });
+  }
+
+  function applyMe(me) {
+    if (me && me.csrfToken) {
+      csrfToken = me.csrfToken;
+      sessionStorage.setItem('sclAdminCsrf', csrfToken);
+    }
+    if (me && me.defaultPasswordInUse) SCL.show('defaultPasswordWarning');
+    else SCL.hide('defaultPasswordWarning');
+  }
+
+  function loadAll() {
+    return authApi('/api/admin/me').then(function (me) {
+      applyMe(me);
+      return Promise.all([loadDashboard(), loadSessions(), loadEnquiries(), loadBookings(), loadSettings(), loadAudit()]);
+    }).catch(function (error) {
+      sessionStorage.removeItem('sclAdminCsrf');
+      csrfToken = '';
+      showLogin();
+      if (error && error.message && error.message !== 'Admin login required.') alert(error.message);
+    });
+  }
+
+  document.getElementById('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    SCL.hide('loginError');
+    SCL.api('/api/admin/login', {
+      method: 'POST',
+      body: JSON.stringify({ username: SCL.getValue('adminUsername'), password: document.getElementById('adminPassword').value })
+    }).then(function (payload) {
+      applyMe(payload);
+      showApp();
+    }).catch(function (error) {
+      document.getElementById('loginError').textContent = error.message;
+      SCL.show('loginError');
+    });
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', function () {
+    authApi('/api/admin/logout', { method: 'POST' }).finally(function () {
+      sessionStorage.removeItem('sclAdminCsrf');
+      csrfToken = '';
+      showLogin();
+    });
+  });
+
+  document.querySelectorAll('[data-admin-tab]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('[data-admin-tab]').forEach(function (b) { b.classList.remove('active'); });
+      document.querySelectorAll('.sc-admin-panel').forEach(function (p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.getAttribute('data-admin-tab')).classList.add('active');
+    });
+  });
+
+  document.getElementById('sessionForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var id = document.getElementById('sessionEditId').value;
+    var method = id ? 'PUT' : 'POST';
+    var path = id ? '/api/admin/sessions/' + id : '/api/admin/sessions';
+    authApi(path, { method: method, body: JSON.stringify(sessionPayload()) })
+      .then(function () {
+        flash('sessionFormMessage', 'Session saved successfully.', 'info');
+        clearSessionForm();
+        return Promise.all([loadSessions(), loadDashboard(), loadAudit()]);
+      })
+      .catch(function (error) { flash('sessionFormMessage', error.message, 'danger'); });
+  });
+
+  document.getElementById('clearSessionForm').addEventListener('click', clearSessionForm);
+  document.getElementById('refreshSessions').addEventListener('click', loadSessions);
+  document.getElementById('refreshAudit').addEventListener('click', loadAudit);
+
+  document.getElementById('settingsForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    authApi('/api/admin/settings', {
+      method: 'PUT',
+      body: JSON.stringify({
+        defaultPricePerParticipant: Number(SCL.getValue('pricePerParticipant') || 0),
+        programmePrices: collectProgrammePrices(),
+        payment: {
+          accountName: SCL.getValue('paymentAccountName'),
+          bankName: SCL.getValue('paymentBankName'),
+          sortCode: SCL.getValue('paymentSortCode'),
+          accountNumber: SCL.getValue('paymentAccountNumber'),
+          instructions: SCL.getValue('paymentInstructions')
+        }
+      })
+    }).then(function () { flash('settingsMessage', 'Settings saved successfully.', 'info'); return Promise.all([loadSettings(), loadSessions(), loadAudit()]); })
+      .catch(function (error) { flash('settingsMessage', error.message, 'danger'); });
+  });
+
+  document.getElementById('exportEnquiries').addEventListener('click', function () {
+    authApi('/api/admin/export/enquiries').then(function (csv) { SCL.downloadCsv('summitcraft-enquiries.csv', csv); }).catch(function (error) { alert(error.message); });
+  });
+  document.getElementById('exportBookings').addEventListener('click', function () {
+    authApi('/api/admin/export/bookings').then(function (csv) { SCL.downloadCsv('summitcraft-bookings.csv', csv); }).catch(function (error) { alert(error.message); });
+  });
+
+  authApi('/api/admin/me').then(function (me) {
+    applyMe(me);
+    showApp();
+  }).catch(showLogin);
+})();
+</script>
+</body>
+</html>

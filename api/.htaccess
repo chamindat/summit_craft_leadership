@@ -1,0 +1,15 @@
+Options -Indexes
+RewriteEngine On
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header unset X-Powered-By
+</IfModule>
+
+<FilesMatch "^(config|config\.example)\.php$">
+  Require all denied
+</FilesMatch>
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ index.php [QSA,L]
