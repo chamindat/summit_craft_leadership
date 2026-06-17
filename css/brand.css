@@ -741,3 +741,212 @@ a:hover { color: var(--sc-gold-2); }
 @media (max-width: 991.98px) {
   .sc-hero-slideshow { inset: 76px 0 0 0; }
 }
+
+/* Admin portal refinement: isolate dashboard styling from the public homepage/hero visuals */
+body.admin-page {
+  background:
+    radial-gradient(circle at 10% 0%, rgba(255,193,38,.11), transparent 25rem),
+    linear-gradient(180deg, #f6f0e4 0%, #fffaf0 100%);
+}
+body.admin-page .sc-page-header {
+  padding-top: 10rem;
+  padding-bottom: 3.75rem;
+  background:
+    linear-gradient(120deg, rgba(0,0,0,.96), rgba(23,18,8,.92)),
+    radial-gradient(circle at 78% 18%, rgba(255,193,38,.18), transparent 20rem);
+}
+body.admin-page .sc-page-header h1 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+}
+body.admin-page main > section.py-7.bg-white {
+  background: transparent !important;
+  padding-top: 4rem !important;
+}
+body.admin-page #adminApp > .d-flex:first-child {
+  background: #fffdf8;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 22px;
+  padding: 1.35rem 1.5rem;
+  box-shadow: 0 14px 34px rgba(0,0,0,.07);
+}
+body.admin-page .sc-admin-tabs {
+  justify-content: flex-start;
+  background: linear-gradient(135deg, #050505, #17130b);
+  border: 1px solid rgba(255,193,38,.24);
+  border-radius: 22px;
+  padding: .9rem;
+  box-shadow: 0 18px 42px rgba(0,0,0,.16);
+}
+body.admin-page .sc-admin-tabs button {
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.86);
+  border-color: rgba(255,193,38,.28);
+}
+body.admin-page .sc-admin-tabs button:hover {
+  color: var(--sc-gold);
+  background: rgba(255,193,38,.08);
+}
+body.admin-page .sc-admin-tabs button.active {
+  background: linear-gradient(135deg, var(--sc-gold), var(--sc-gold-2));
+  color: #080808;
+  border-color: transparent;
+}
+body.admin-page .sc-admin-panel {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+}
+body.admin-page #dashboardCards .card.sc-card,
+body.admin-page #dashboardCards .sc-card {
+  min-height: 150px;
+  background: linear-gradient(145deg, #ffffff, #fff7df);
+  border: 1px solid rgba(0,0,0,.08);
+  border-top: 4px solid var(--sc-gold);
+  border-radius: 22px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.08);
+}
+body.admin-page #dashboardCards h3,
+body.admin-page #dashboardCards h4,
+body.admin-page #dashboardCards .h3,
+body.admin-page #dashboardCards .h4 {
+  color: #111;
+}
+body.admin-page .card.sc-card {
+  border-radius: 22px;
+}
+body.admin-page .sc-admin-table-wrap {
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 18px 42px rgba(0,0,0,.08);
+}
+body.admin-page .sc-admin-table th {
+  background: #11100e;
+  color: var(--sc-gold);
+  border-bottom: 0;
+}
+body.admin-page .sc-admin-table td {
+  background: #fff;
+  border-color: rgba(0,0,0,.06);
+}
+body.admin-page .table > :not(caption) > * > * {
+  padding: .9rem .95rem;
+}
+body.admin-page .sc-alert {
+  box-shadow: 0 10px 28px rgba(0,0,0,.06);
+}
+body.admin-page code {
+  color: #8b5d00;
+  background: rgba(255,193,38,.12);
+  padding: .1rem .3rem;
+  border-radius: .35rem;
+}
+
+/* Admin dashboard metric cards */
+body.admin-page #dashboardCards {
+  align-items: stretch;
+}
+body.admin-page .sc-admin-stat {
+  position: relative;
+  overflow: hidden;
+  min-height: 150px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem;
+  border-radius: 22px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 92% 8%, rgba(255,193,38,.20), transparent 5.8rem),
+    linear-gradient(145deg, #090909, #1b160d);
+  border: 1px solid rgba(255,193,38,.24);
+  box-shadow: 0 18px 42px rgba(0,0,0,.14);
+}
+body.admin-page .sc-admin-stat::after {
+  content: "";
+  position: absolute;
+  right: -2.7rem;
+  bottom: -2.9rem;
+  width: 8.5rem;
+  height: 6.2rem;
+  background: rgba(255,255,255,.055);
+  clip-path: polygon(0 100%, 30% 30%, 45% 68%, 63% 0, 80% 58%, 100% 100%);
+}
+body.admin-page .sc-admin-stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+  background: linear-gradient(135deg, var(--sc-gold), var(--sc-gold-2));
+  box-shadow: 0 12px 28px rgba(255,193,38,.22);
+  font-size: 1.22rem;
+  position: relative;
+  z-index: 1;
+}
+body.admin-page .sc-admin-stat-content {
+  position: relative;
+  z-index: 1;
+}
+body.admin-page .sc-admin-stat span {
+  display: block;
+  min-height: 2.2em;
+  color: rgba(255,255,255,.72);
+  font-family: var(--sc-heading);
+  font-size: .68rem;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  line-height: 1.35;
+}
+body.admin-page .sc-admin-stat strong {
+  display: block;
+  margin-top: .35rem;
+  color: #fff;
+  font-family: var(--sc-heading);
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 950;
+  line-height: .95;
+  letter-spacing: .03em;
+}
+body.admin-page .sc-admin-stat-amber {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(255,193,38,.22), transparent 5.8rem),
+    linear-gradient(145deg, #0b0b0b, #2c2109);
+}
+body.admin-page .sc-admin-stat-green {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(255,193,38,.18), transparent 5.8rem),
+    linear-gradient(145deg, #09100c, #182114);
+}
+body.admin-page .sc-admin-stat-blue {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(255,193,38,.18), transparent 5.8rem),
+    linear-gradient(145deg, #080c12, #171a22);
+}
+body.admin-page .sc-admin-stat-orange {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(255,193,38,.22), transparent 5.8rem),
+    linear-gradient(145deg, #120c06, #2c1705);
+}
+body.admin-page .sc-admin-stat-dark {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(255,193,38,.16), transparent 5.8rem),
+    linear-gradient(145deg, #050505, #141414);
+}
+
+@media (max-width: 575.98px) {
+  body.admin-page .sc-admin-stat {
+    min-height: 125px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  body.admin-page .sc-admin-stat span {
+    min-height: auto;
+  }
+}

@@ -8,9 +8,10 @@
   <title>Admin Portal | SummitCraft Leadership</title>
   <link href="css/styles.css" rel="stylesheet" />
   <link href="css/brand.css" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="admin-page">
 
 <a href="#main-content" class="skip-link">Skip to content</a>
 
@@ -318,21 +319,25 @@
 
   function renderDashboard(data) {
     var cards = [
-      ['Enquiries', data.enquiries],
-      ['Bookings', data.bookings],
-      ['Active sessions', data.activeSessions],
-      ['Booked participants', data.bookedParticipants],
-      ['Pending payments', data.pendingPayments],
-      ['Paid bookings', data.paidBookings]
+      { label: 'Enquiries', value: data.enquiries, icon: 'fa-envelope-open-text', tone: 'gold' },
+      { label: 'Bookings', value: data.bookings, icon: 'fa-calendar-check', tone: 'amber' },
+      { label: 'Active sessions', value: data.activeSessions, icon: 'fa-person-hiking', tone: 'green' },
+      { label: 'Booked participants', value: data.bookedParticipants, icon: 'fa-users', tone: 'blue' },
+      { label: 'Pending payments', value: data.pendingPayments, icon: 'fa-clock', tone: 'orange' },
+      { label: 'Paid bookings', value: data.paidBookings, icon: 'fa-circle-check', tone: 'dark' }
     ];
     var wrap = document.getElementById('dashboardCards');
     wrap.innerHTML = '';
     cards.forEach(function (item) {
       var col = document.createElement('div');
-      col.className = 'col-md-4 col-xl';
-      col.innerHTML = '<div class="sc-admin-stat"><span></span><strong></strong></div>';
-      col.querySelector('span').textContent = item[0];
-      col.querySelector('strong').textContent = item[1];
+      col.className = 'col-sm-6 col-xl-2';
+      col.innerHTML =
+        '<div class="sc-admin-stat sc-admin-stat-' + item.tone + '">' +
+          '<div class="sc-admin-stat-icon"><i class="fas ' + item.icon + '"></i></div>' +
+          '<div class="sc-admin-stat-content"><span></span><strong></strong></div>' +
+        '</div>';
+      col.querySelector('span').textContent = item.label;
+      col.querySelector('strong').textContent = item.value == null ? 0 : item.value;
       wrap.appendChild(col);
     });
   }
