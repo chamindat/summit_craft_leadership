@@ -89,15 +89,15 @@ a:hover { color: var(--sc-gold-2); }
   display: inline-flex;
   align-items: center;
   gap: .75rem;
-  min-width: 190px;
+  min-width: 210px;
   font-family: var(--sc-heading);
   color: #fff !important;
   font-weight: 900;
   letter-spacing: .08em;
 }
 .navbar-brand img {
-  width: 220px;
-  max-height: 58px;
+  width: 245px;
+  max-height: 64px;
   object-fit: contain;
   display: block;
 }
@@ -325,6 +325,22 @@ a:hover { color: var(--sc-gold-2); }
   box-shadow: inset 0 0 0 6px rgba(255,193,38,.05);
 }
 .sc-card .sc-icon-circle { margin-bottom: 1.2rem; }
+
+/* Programme icon images */
+.sc-programme-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 78px;
+  height: 78px;
+  margin-bottom: 1.2rem;
+}
+.sc-programme-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
 .sc-programme-card { min-height: 255px; transition: transform .22s ease, box-shadow .22s ease; }
 .sc-programme-card:hover { transform: translateY(-8px); box-shadow: 0 30px 70px rgba(0,0,0,.26); }
 .sc-card-link { font-family:var(--sc-heading); text-transform:uppercase; letter-spacing:.14em; font-weight:850; color:var(--sc-gold); }
@@ -561,7 +577,7 @@ a:hover { color: var(--sc-gold-2); }
 
 @media (max-width: 991.98px) {
   .navbar-marketing { min-height: 76px; }
-  .navbar-brand img { width: 180px; max-height: 46px; }
+  .navbar-brand img { width: 200px; max-height: 52px; }
   .navbar-collapse { background:#050505; border-top:1px solid rgba(255,255,255,.08); margin-top:.75rem; padding:.75rem 0 1rem; }
   .navbar-dark .nav-link { padding:.85rem .5rem !important; }
   .nav-cta, .nav-book { margin: .4rem 0 0; display:inline-block; width: 100%; }
