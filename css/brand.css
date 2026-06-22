@@ -326,8 +326,9 @@ a:hover { color: var(--sc-gold-2); }
 }
 .sc-card .sc-icon-circle { margin-bottom: 1.2rem; }
 
-/* Programme icon images */
-.sc-programme-icon {
+/* Programme and service icon images */
+.sc-programme-icon,
+.sc-service-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -335,7 +336,8 @@ a:hover { color: var(--sc-gold-2); }
   height: 78px;
   margin-bottom: 1.2rem;
 }
-.sc-programme-icon img {
+.sc-programme-icon img,
+.sc-service-icon img {
   width: 100%;
   height: 100%;
   object-fit: contain;
